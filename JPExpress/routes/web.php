@@ -17,7 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['auth','admin']],function() {
+    Route::get('/users','AdminController@users');
+    Route::get('/countrys','AdminController@countrys');
+    Route::get('/userChangeStatus','AdminController@userChangeStatus')->name('admin.userChangeStatus');
+    Route::put('/countrycreate','AdminController@countrystore');
+    Route::get('/viewcountries','AdminController@viewcountries');
+});
+
 Auth::routes();
+
+Route::group(['middleware' => ['auth','isUser']],function() {
+
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');

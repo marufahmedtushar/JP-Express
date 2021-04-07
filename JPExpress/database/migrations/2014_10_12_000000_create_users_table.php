@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('company');
             $table->string('user_type')->default('user')->nullable();
+            $table->tinyInteger('isban')->default('0')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

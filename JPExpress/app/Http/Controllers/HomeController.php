@@ -28,7 +28,9 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $users = User::all();
-        return view('dashboard')->with('users',$users);
+
+        return view('dashboard');
     }
+
+
 }
