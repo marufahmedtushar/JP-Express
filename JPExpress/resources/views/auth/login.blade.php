@@ -64,6 +64,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="alert alert-danger">{{ session('message') }}</div>
                                     <strong>{{ $message }}</strong>
                                 @endif
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+
+                                @if (session('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <form class="form" novalidate="novalidate" method="POST" action="{{ route('login') }}">
                                 @csrf
                                     <!--begin::Title-->
@@ -86,6 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
+                                        
                                     </span>
                                 @enderror
                                     </div>

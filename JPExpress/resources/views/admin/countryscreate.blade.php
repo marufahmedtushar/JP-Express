@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label>Select Country Name:</label>
                                     <div class="col-lg-12 col-md-9 col-sm-12">
-                                        <select name="country_name" class="form-control form-control-solid" data-size="6">
+                                        <select name="country_name" class="form-control" id="kt_select2_1">
                                             <option value="Afganistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -293,22 +293,7 @@
                                 <div class="form-group">
 
                                 </div>
-{{--                                <div class="form-group row align-items-center">--}}
-{{--                                    <label class="col-lg-3 col-form-label">Status:</label>--}}
-{{--                                    <div class="col-lg-6">--}}
-{{--                                        <div class="checkbox-inline">--}}
-{{--                                            <label class="checkbox">--}}
-{{--                                                <input type="checkbox" />--}}
-{{--                                                <span></span>Active</label>--}}
-{{--                                            <label class="checkbox">--}}
-{{--                                                <input type="checkbox" />--}}
-{{--                                                <span></span>Inactive</label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-
-                            </div>
+</div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <a href="/countrys"  class="btn btn-secondary">Cancel</a>
@@ -328,6 +313,7 @@
 @section('js')
 
     <script src="admintemplate/assets/js/pages/widgets.js"></script>
+
 
 
 
