@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Price;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -110,6 +111,42 @@ class HomeController extends Controller
     {
         $countrys = Country::all();
         return view('quickrates')->with('countrys',$countrys);
+
+    }
+
+    public function onlinebooking()
+    {
+
+        return view('onlinebooking');
+
+    }
+
+    public function pricecheck(Request $request){
+        $from  = $request->input('from');
+        $to  = $request->input('to');
+        $service  = $request->input('service_type');
+        $weight  = $request->input('weight_kg');
+
+
+        if ($price = Price::where('from','LIKE','%'.$from.'%')
+            ->where(  'to','LIKE','%'.$to.'%' )
+            ->where( 'service_type','LIKE','%'.$service.'%')
+            ->where('weight_kg','>=','%'.$weight.'%' )
+            ->get())
+        {
+            return redirect()->back()->with(compact('price'));
+        }
+        else
+        {
+            return redirect()->back()->with('status','...........');
+        }
+
+
+
+
+
+
+
 
     }
 

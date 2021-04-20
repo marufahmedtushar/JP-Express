@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
 
-    <link href="admintemplate/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css" />
+
 @endsection
 @section('subheader')
     <!--begin::Subheader-->
@@ -10,7 +10,7 @@
             <!--begin::Details-->
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <!--begin::Title-->
-                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Create Traveller</h5>
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Book Online</h5>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
@@ -182,189 +182,337 @@
     <!--end::Subheader-->
 @endsection
 @section('content')
-    <div class="d-flex flex-column-fluid">
-        <div class="container ">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
 
-            @if (session('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ session('error') }}
-                </div>
-            @endif
-<!--begin::Row-->
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <!--begin::Row-->
+    <div class="row">
+        <div class="col-md-12">
             <div class="card card-custom mt-5">
                 <div class="card-body">
-                    <h3 class="card-title">Become a Traveller</h3>
-                    <h5 class="card-title"></h5>
-                </div>
+                    <h3 class="card-title">
+                        Get A Online Booking Here...
+                    </h3>
 
+                </div>
 
 
                 <!--begin::Form-->
-                <form class="form" action="/travelercreate" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        {{ method_field('PUT') }}
+                <form class="form">
                     <div class="card-body">
+
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Type</label>
+                                    <select class="form-control" id="exampleSelectd">
+                                        <option>International</option>
+                                        <option>Local</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Service Type</label>
+                                    <select class="form-control" id="exampleSelectd">
+                                        <option>Export Service 1</option>
+                                        <option>Export Service 2</option>
+                                        <option>Export Service 3</option>
+                                        <option>Export Service 4</option>
+                                        <option>Export Service 5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Object Type</label>
+                                    <select class="form-control" id="exampleSelectd">
+                                        <option>Document 1</option>
+                                        <option>Document 2</option>
+                                        <option>Document 3</option>
+                                        <option>Document 4</option>
+                                        <option>Document 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Width</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Width"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Height</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Height"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Length</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Length"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Weight(kg)</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Weight"/>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Shipment Details</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Shipment Details"/>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Value</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Value"/>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!--end::Row-->
+    <!--begin::Row-->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-custom mt-5">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        Shipper
+                    </h3>
+                </div>
+
+
+                <!--begin::Form-->
+
+                    <div class="card-body">
+
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleSelectd">Name</label>
+                                    <label for="exampleSelectd">Full Name</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Full Name"/>
+                                </div>
+                            </div>
 
-                                    <input type="text" class="form-control" placeholder="Enter full name" name="name" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Company Name</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Company Name"/>
+                                </div>
+                            </div>
 
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">Mobile</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Mobile"/>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Email</label>
-                                    <input type="email" class="form-control" placeholder="Enter email" name="email" />
+                                    <input type="email" class="form-control form-control-sm" placeholder="Email"/>
                                 </div>
                             </div>
+
                         </div>
-
-
-
-
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Mobile</label>
-                                        <input type="text" class="form-control" placeholder="Mobile Number" name="mobile" />
-                                </div>
-                            </div>
-                        </div>
-
-
-
 
 
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleSelectd">Permanent Address</label>
-                                    <textarea class="form-control" rows="3" name="permanent_address" placeholder="Please enter your permanent address"></textarea>
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Travelling Address</label>
-                                    <textarea class="form-control" rows="3" name="travelling_address" placeholder="Please enter your travelling address"></textarea>
+                                    <label for="exampleSelectd">Zip</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Zip"/>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleSelectd">Address with contact number</label>
-                                    <textarea class="form-control" rows="3" name="address_number" placeholder="Please enter your address with contact number"></textarea>
+                                    <label for="exampleSelectd">City</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="City"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleSelectd">State</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="State"/>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Photocopy of Passport</label>
-                                    <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="passport" type="file">
-                                </div>
+                                <label>Address</label>
+                                <textarea class="form-control" rows="3" name="address" placeholder="Address"></textarea>
                             </div>
-
-
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleSelectd">Photocopy of Travel Ticket</label>
-                                    <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="travel_ticket" type="file">
+                                    <label for="exampleSelectd">Country</label>
+                                    <select class="form-control" id="exampleSelectd">
+                                        <option>Country 1</option>
+                                        <option>Country 2</option>
+                                        <option>Country 3</option>
+                                        <option>Country 4</option>
+                                        <option>Country 5</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Photocopy of National ID</label>
-                                    <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="nid" type="file">
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Photocopy of Hotel Booking</label>
-                                    <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="hotel_booking" type="file">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">Travel/Departure Cirtificate</label>
-                                    <input class="dropzone-select btn btn-light-primary font-weight-bold btn-lg" name="travel_departure_cirtificate" type="file">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="exampleSelectd">One local guarantor</label>
-                                    <input type="text" class="form-control" placeholder="local guarantor" name="local_guarantor" />
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="row">
-
-                        </div>
-
-
-
 
 
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
-                    </div>
-                </form>
-                <!--end::Form-->
 
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="card card-custom mt-5">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        Reciver
+                    </h3>
+
+                </div>
+
+
+                <!--begin::Form-->
+
+                <div class="card-body">
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Full Name</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Full Name"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Company Name</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Company Name"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Mobile</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Mobile"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Email</label>
+                                <input type="email" class="form-control form-control-sm" placeholder="Email"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Zip</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Zip"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleSelectd">City</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="City"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleSelectd">State</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="State"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Address</label>
+                            <textarea class="form-control" rows="3" name="address" placeholder="Address"></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectd">Country</label>
+                                <select class="form-control" id="exampleSelectd">
+                                    <option>Country 1</option>
+                                    <option>Country 2</option>
+                                    <option>Country 3</option>
+                                    <option>Country 4</option>
+                                    <option>Country 5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
 
             </div>
         </div>
     </div>
-    <!--end::Row-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-footer mt-5">
+            <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <button type="reset" class="btn btn-secondary border-danger mr-2">Cancel</button>
         </div>
+        </form>
+        <!--end::Form-->
     </div>
+</div>
 
 
-
-
+    <!--end::Row-->
 
 @endsection
 @section('js')
 
 
 
-    <script src="admintemplate/assets/plugins/custom/uppy/uppy.bundle.js"></script>
-    <script src="admintemplate/assets/js/pages/crud/file-upload/uppy.js"></script>
 
 
 

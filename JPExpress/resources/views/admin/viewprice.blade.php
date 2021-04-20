@@ -13,7 +13,7 @@
             <!--begin::Details-->
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <!--begin::Title-->
-                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">View Traveller</h5>
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">View Price</h5>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
@@ -208,8 +208,8 @@
                     <span class="text-muted mt-3 font-weight-bold font-size-sm"></span>
                 </h3>
                 <div class="card-toolbar">
-                    <a href="createtraveller" class="btn btn-info font-weight-bolder font-size-sm">Create New
-                        Traveler</a>
+                    <a href="createprice" class="btn btn-info font-weight-bolder font-size-sm">Create New
+                        Price</a>
                 </div>
             </div>
             <!--end::Header-->
@@ -225,16 +225,17 @@
                                     <span></span>
                                 </label>
                             </th>
-                            <th class="pl-0" style="min-width: 120px">Traveler id</th>
-                            <th style="min-width: 110px">Name</th>
-
-
-                            <th style="min-width: 120px">Status</th>
-                            <th class="pr-0 text-right" style="min-width: 160px">Action</th>
+                            <th class="pl-0" >Price id</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Service Type</th>
+                            <th>Weight(Kg)</th>
+                            <th>Price</th>
+                            <th class="pr-0 text-right">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($traveler as $travelers)
+                        @foreach($price as $prices)
                             <tr>
                                 <td class="pl-0 py-6">
                                     <label class="checkbox checkbox-lg checkbox-inline">
@@ -244,55 +245,35 @@
                                 </td>
                                 <td class="pl-0">
                                     <a href="#"
-                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$travelers->id}}</a>
+                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$prices->id}}</a>
                                 </td>
                                 <td>
-                                    <span
-                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$travelers->name}}</span>
+                                    <span class="label label-lg label-light-primary label-inline">{{$prices->from}}</span>
+                                </td>
+
+                                <td>
+                                    <span class="label label-lg label-light-primary label-inline">{{$prices->to}}</span>
+                                </td>
+
+                                <td class="pl-0">
+                                    <a href="#"
+                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$prices->service_type}}</a>
+                                </td>
+                                <td class="pl-0">
+                                    <a href="#"
+                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$prices->weight_kg}}</a>
+                                </td>
+                                <td class="pl-0">
+                                    <a href="#"
+                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$prices->price}}</a>
                                 </td>
 
 
-                                <td>
-                                    @if($travelers->status == 1)
-                                        <span class="label label-lg label-light-primary label-inline">Active</span>
-                                    @else
-                                        <span class="label label-lg label-light-danger label-inline">Inactive</span>
-                                    @endif
-                                </td>
                                 <td class="pr-0 text-right">
-                                    <a href="" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3" data-toggle="modal"
-                                       data-target="#exampleModal"
-                                       data-travelerid="{{$travelers->id}}"
-                                       data-name="{{$travelers->name}}"
-                                       data-email="{{$travelers->email}}"
-                                       data-mobile="{{$travelers->mobile}}"
-                                       data-permanent_address="{{$travelers->permanent_address}}"
-                                       data-travelling_address="{{$travelers->travelling_address}}"
-                                       data-address_number="{{$travelers->address_number}}"
-                                       data-passport="{{$travelers->passport}}"
-                                       data-travel_ticket="{{$travelers->travel_ticket}}"
-                                       data-nid="{{$travelers->nid}}"
-                                       data-hotel_booking="{{$travelers->hotel_booking}}"
-                                       data-travel_departure_cirtificate="{{$travelers->travel_departure_cirtificate}}"
-                                       data-local_guarantor="{{$travelers->local_guarantor}}"
-                                    >
-                                        <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\Visible.svg--><svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path
-            d="M3,12 C3,12 5.45454545,6 12,6 C16.9090909,6 21,12 21,12 C21,12 16.9090909,18 12,18 C5.45454545,18 3,12 3,12 Z"
-            fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-        <path
-            d="M12,15 C10.3431458,15 9,13.6568542 9,12 C9,10.3431458 10.3431458,9 12,9 C13.6568542,9 15,10.3431458 15,12 C15,13.6568542 13.6568542,15 12,15 Z"
-            fill="#000000" opacity="0.3"/>
-    </g>
-</svg><!--end::Svg Icon--></span>
-                                    </a>
 
-                                    <a href="/traveleredit/{{$travelers->id}}"
+
+                                    <a data-toggle="modal" data-target="#useredit"
+                                       data-priceid="{{$prices->id}}" data-from="{{$prices->from}}" data-to="{{$prices->to}}" data-service_type="{{$prices->service_type}}" data-weight_kg="{{$prices->weight_kg}}" data-price="{{$prices->price}}"
                                        class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -317,8 +298,8 @@
 																</span>
                                     </a>
                                     <a class="btn btn-icon btn-light btn-hover-primary btn-sm" data-toggle="modal"
-                                       data-target="#DangerModal"
-                                       data-travelerid="{{$travelers->id}}" data-name="{{$travelers->name}}">
+                                       data-target="#DangerModal" data-priceid="{{$prices->id}}" data-from="{{$prices->from}}" data-to="{{$prices->to}}" data-service_type="{{$prices->service_type}}"
+                                      >
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg"
@@ -346,26 +327,28 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-danger">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Traveler</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Price</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                         <i aria-hidden="true" class="ki ki-close"></i>
                                                     </button>
                                                 </div>
-                                                <form action="/deletetraveler/{{$travelers->id}}" method="POST">
+                                                <form action="deleteprice/{{$prices->id}}" method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('delete') }}
                                                     <div class="modal-body">
                                                         <div class="card">
 
 
-                                                            <div class="card-body">
-                                                                <p class="text-dark-50 m-0 pt-5 font-weight-normal">Are
-                                                                    You Sure to Delete This Taveler Called</p>
-                                                                <input type="hidden" name="traveler_id"
-                                                                       id="traveler_id">
+                                                            <div class="card-body text-left">
+                                                                <p class="text-dark-50 m-0 pt-5 font-weight-normal ">Are
+                                                                    You Sure to Delete This Price...?</p>
+                                                                <input type="hidden" name="price_id"
+                                                                       id="price_id">
                                                                 <div class="form-group">
-                                                                    <h5 class="card-title font-weight-bolder name"></h5>
+                                                                    <h5>From: <small class="text from"></small></h5>
+                                                                    <h5>To: <small class="text to"></small></h5>
+                                                                    <h5>Service Type: <small class="text service_type"></small></h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -386,50 +369,111 @@
                                     </div>
 
 
+
                                     <!-- Modal-->
-                                    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal fade" id="useredit" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title traveler_name" id="exampleModalLabel">Traveler Details...</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <div class="modal-header bg-primary">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Price</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
                                                         <i aria-hidden="true" class="ki ki-close"></i>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body text-center">
+                                                <form action="/priceupdate" method="POST">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('PUT') }}
+                                                    <div class="modal-body">
+                                                            <div class="card-body text-left">
+                                                                <input type="hidden" name="price_id"
+                                                                       id="price_id">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleSelectd">From</label>
+
+                                                                                    <select class="form-control form-control-lg" id="from" name="from" id="exampleSelectl">
+                                                                                        <option selected>{{$prices->from}}</option>
+                                                                                        @foreach($countrys as $country)
+                                                                                            <option
+                                                                                                value="{{$country->country_name}}">{{$country->country_name}}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleSelectd">To</label>
+                                                                                    <select class="form-control form-control-lg" id="to" name="to" id="exampleSelectl">
+
+                                                                                        <option  selected>{{$prices->to}}</option>
+                                                                                        @foreach($countrys as $country)
+                                                                                            <option
+                                                                                                value="{{$country->country_name}}">{{$country->country_name}}</option>
+                                                                                        @endforeach
+
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
 
 
-                                                    <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <input type="hidden" name="traveler_id" id="traveler_id">
-                                                                    <h5>Name: <small class="text name"></small></h5>
-                                                                    <h5>Email: <small class="text email"></small></h5>
-                                                                    <h5>Mobile: <small class="text mobile"></small></h5>
-                                                                    <h5>Permanent Address: <small class="text permanent_address"></small></h5>
-                                                                    <h5>Travelling Address: <small class="text travelling_address"></small></h5>
-                                                                    <h5>Address with contact number: <small class="text address_number"></small></h5>
-                                                                    <h5>Photocopy of Passport:  <img class="img img-thumbnail passport" src="{{$travelers->passport}}"  alt="Image placeholder" style="height: 100px;width: 120px;"></h5>
-                                                                    <h5>Photocopy of Travel Ticket:  <img class="img img-thumbnail travel_ticket" src="{{$travelers->travel_ticket}}"  alt="Image placeholder" style="height: 100px;width: 120px;"></h5>
-                                                                    <h5>Photocopy of National ID:  <img class="img img-thumbnail nid" src="{{$travelers->nid}}"  alt="Image placeholder" style="height: 100px;width: 120px;"></h5>
-                                                                    <h5>Photocopy of Hotel Booking:  <img class="img img-thumbnail hotel_booking" src="{{$travelers->hotel_booking}}"  alt="Image placeholder" style="height: 100px;width: 120px;"></h5>
-                                                                    <h5>Travel/Departure Cirtificate:  <img class="img img-thumbnail travel_departure_cirtificate" src="{{$travelers->travel_departure_cirtificate}}"  alt="Image placeholder" style="height: 100px;width: 120px;"></h5>
-                                                                    <h5>One local guarantor: <small class="text local_guarantor"></small></h5>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleSelectd">Service Type</label>
+                                                                                    <select class="form-control" id="service_type" name="service_type" id="exampleSelectd">
+                                                                                        @if($prices->service_type == 'Export')
+                                                                                            <option value="Export" selected>Export</option>
+                                                                                            <option value="Import">Import</option>
+                                                                                        @elseif($prices->service_type == 'Import')
+                                                                                            <option value="Import" selected>Import</option>
+                                                                                            <option value="Export">Export</option>
+                                                                                        @endif
 
-                                                                </div>
+
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <label>Weight(kg)</label>
+                                                                                <input  type="text" class="form-control form-control-sm" id="weight_kg" name="weight_kg"/>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <label>Price</label>
+                                                                                <input type="text"  class="form-control form-control-sm" id="price" name="price" />
+                                                                            </div>
+
+                                                                        </div>
                                                             </div>
-                                                        </div>
 
+                                                    </div>
 
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-
-                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                                class="btn btn-light-primary font-weight-bold"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary font-weight-bold">
+                                                            Save changes
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </td>
                             </tr>
 
@@ -470,47 +514,32 @@
 
         $('#DangerModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
-            var traveler_id = button.data('travelerid')
-            var name = button.data('name')
+            var price_id = button.data('priceid')
+            var from = button.data('from')
+            var to = button.data('to')
+            var service_type = button.data('service_type')
             var modal = $(this)
-            modal.find('.modal-body #traveler_id').val(traveler_id)
-            modal.find('.modal-body .name').text(name)
+            modal.find('.modal-body #price_id').val(price_id)
+            modal.find('.modal-body .from').text(from)
+            modal.find('.modal-body .to').text(to)
+            modal.find('.modal-body .service_type').text(service_type)
         })
 
-        $('#exampleModal').on('show.bs.modal', function (event) {
+        $('#useredit').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
-            // var traveler_id = button.data('travelerid')
-            // var travel_ticket = button.data('travel_ticket')
-            // var modal = $(this)
-            // modal.find('.modal-body #traveler_id').val(traveler_id)
-            // modal.find('.modal-body .travel_ticket').attr("src","/storage/images/"+travel_ticket)
-            var traveler_id = button.data('travelerid')
-            var name = button.data('name')
-            var email = button.data('email')
-            var mobile = button.data('mobile')
-            var permanent_address = button.data('permanent_address')
-            var travelling_address = button.data('travelling_address')
-            var address_number = button.data('address_number')
-            var passport = button.data('passport')
-            var travel_ticket = button.data('travel_ticket')
-            var nid = button.data('nid')
-            var hotel_booking = button.data('hotel_booking')
-            var travel_departure_cirtificate = button.data('travel_departure_cirtificate')
-            var local_guarantor = button.data('local_guarantor')
+            var price_id = button.data('priceid')
+            var from = button.data('from')
+            var to = button.data('to')
+            var service_type = button.data('service_type')
+            var weight_kg = button.data('weight_kg')
+            var price = button.data('price')
             var modal = $(this)
-            modal.find('.modal-body #traveler_id').val(traveler_id)
-            modal.find('.modal-body .name').text(name)
-            modal.find('.modal-body .email').text(email)
-            modal.find('.modal-body .mobile').text(mobile)
-            modal.find('.modal-body .permanent_address').text(permanent_address)
-            modal.find('.modal-body .travelling_address').text(travelling_address)
-            modal.find('.modal-body .address_number').text(address_number)
-            modal.find('.modal-body .passport').attr("src","/storage/images/"+passport)
-            modal.find('.modal-body .travel_ticket').attr("src","/storage/images/"+travel_ticket)
-            modal.find('.modal-body .nid').attr("src","/storage/images/"+nid)
-            modal.find('.modal-body .hotel_booking').attr("src","/storage/images/"+hotel_booking)
-            modal.find('.modal-body .travel_departure_cirtificate').attr("src","/storage/images/"+travel_departure_cirtificate)
-            modal.find('.modal-body .local_guarantor').text(local_guarantor)
+            modal.find('.modal-body #price_id').val(price_id)
+            modal.find('.modal-body #from').val(from)
+            modal.find('.modal-body #to').val(to)
+            modal.find('.modal-body #service_type').val(service_type)
+            modal.find('.modal-body #weight_kg').val(weight_kg)
+            modal.find('.modal-body #price').val(price)
         })
     </script>
 

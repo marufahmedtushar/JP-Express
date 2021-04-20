@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Country;
 use App\Traveler;
+use App\Price;
 class AdminController extends Controller
 {
     public function users()
@@ -89,8 +90,9 @@ class AdminController extends Controller
             $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
             //get just ext
             $extension = $request->file('passport')->getClientOriginalExtension();
+            $inputname = 'passport';
             //file name to  store
-            $passport = $filename.'_'.time().'.'.$extension;
+            $passport = $filename.'_'.time().'_'.$inputname.'.'.$extension;
             //upload image
             $path = $request->file('passport')->storeAs('public/images',$passport);
 
@@ -107,8 +109,9 @@ class AdminController extends Controller
             $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
             //get just ext
             $extension = $request->file('travel_ticket')->getClientOriginalExtension();
+            $inputname = 'travel_ticket';
             //file name to  store
-            $travel_ticket = $filename.'_'.time().'.'.$extension;
+            $travel_ticket = $filename.'_'.time().'_'.$inputname.'.'.$extension;
             //upload image
             $path = $request->file('travel_ticket')->storeAs('public/images',$travel_ticket);
 
@@ -125,8 +128,9 @@ class AdminController extends Controller
             $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
             //get just ext
             $extension = $request->file('nid')->getClientOriginalExtension();
+            $inputname = 'nid';
             //file name to  store
-            $nid = $filename.'_'.time().'.'.$extension;
+            $nid = $filename.'_'.time().'_'.$inputname.'.'.$extension;
             //upload image
             $path = $request->file('nid')->storeAs('public/images',$nid);
 
@@ -143,8 +147,9 @@ class AdminController extends Controller
             $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
             //get just ext
             $extension = $request->file('hotel_booking')->getClientOriginalExtension();
+            $inputname = 'hotel_booking';
             //file name to  store
-            $hotel_booking = $filename.'_'.time().'.'.$extension;
+            $hotel_booking = $filename.'_'.time().'_'.$inputname.'.'.$extension;
             //upload image
             $path = $request->file('hotel_booking')->storeAs('public/images',$hotel_booking);
 
@@ -161,8 +166,9 @@ class AdminController extends Controller
             $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
             //get just ext
             $extension = $request->file('travel_departure_cirtificate')->getClientOriginalExtension();
+            $inputname = 'travel_departure_cirtificate';
             //file name to  store
-            $travel_departure_cirtificate = $filename.'_'.time().'.'.$extension;
+            $travel_departure_cirtificate = $filename.'_'.time().'_'.$inputname.'.'.$extension;
             //upload image
             $path = $request->file('travel_departure_cirtificate')->storeAs('public/images',$travel_departure_cirtificate);
 
@@ -347,6 +353,88 @@ class AdminController extends Controller
         return back()->with('status','Traveler Deleted Successfully...');
 
     }
+
+    public function createprice()
+    {
+        $countrys = Country::all();
+        return view('admin.createprice')->with('countrys',$countrys);
+    }
+
+    public function viewprice()
+    {
+        $countrys = Country::all();
+        $price = Price::all();
+        return view('admin.viewprice')->with('price',$price)->with('countrys',$countrys);;
+    }
+
+
+
+    public function pricestore(Request $request){
+
+        $this->validate($request,[
+            'from' => 'required',
+            'to' => 'required',
+            'service_type' => 'required',
+            'weight_kg' => 'required',
+            'price' => 'required',
+        ]);
+
+
+
+
+        $price = new Price();
+        $price->from = $request->input('from');
+        $price->to = $request->input('to');
+        $price->service_type = $request->input('service_type');
+        $price->weight_kg = $request->input('weight_kg');
+        $price->price = $request->input('price');
+        $price->save();
+        return back()->with('status','Price Created Successfully...');
+
+    }
+
+
+
+
+
+
+
+
+
+
+    public function priceupdate(Request $request){
+
+
+
+
+
+
+        $price = Price::findOrFail($request->price_id);
+        $price->from = $request->input('from');
+        $price->to = $request->input('to');
+        $price->service_type = $request->input('service_type');
+        $price->weight_kg = $request->input('weight_kg');
+        $price->price = $request->input('price');
+        $price->update();
+
+        return back()->with('status','Price Updated Successfully...');
+    }
+
+
+
+    public function pricedelete(Request $request)
+    {
+
+        $price = Price::findOrFail($request->price_id);
+        $price->delete();
+        return back()->with('status','Price Deleted Successfully...');
+
+
+    }
+
+
+
+
 
 
 }

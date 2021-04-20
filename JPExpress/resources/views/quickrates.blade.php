@@ -22,14 +22,18 @@
 
 
                 <!--begin::Form-->
-                <form class="form">
+                    <form class="form" action="/pricecheck" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+
+
                     <div class="card-body">
 
 
                         <div class="form-group">
                             <label for="exampleSelectd">From</label>
 
-                            <select class="form-control form-control-lg" id="exampleSelectl">
+                            <select class="form-control form-control-lg" name="from" id="exampleSelectl">
                                 @foreach($countrys as $country)
                                 <option value="{{$country->country_name}}">{{$country->country_name}}</option>
                                 @endforeach
@@ -39,7 +43,7 @@
 
                         <div class="form-group">
                             <label for="exampleSelectd">To</label>
-                            <select class="form-control form-control-lg" id="exampleSelectl">
+                            <select class="form-control form-control-lg" name="to" id="exampleSelectl">
                                 @foreach($countrys as $country)
                                     <option value="{{$country->country_name}}">{{$country->country_name}}</option>
                                 @endforeach
@@ -62,12 +66,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Service Type</label>
-                                    <select class="form-control" id="exampleSelectd">
-                                        <option>Export Service 1</option>
-                                        <option>Export Service 2</option>
-                                        <option>Export Service 3</option>
-                                        <option>Export Service 4</option>
-                                        <option>Export Service 5</option>
+                                    <select class="form-control" name="service_type" id="exampleSelectd">
+                                        <option>Export</option>
+                                        <option>Import</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,32 +79,32 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Width</label>
-                                    <input type="text" class="form-control form-control-sm"  placeholder="Width"/>
+                                    <input  id="box1" class="form-control form-control-sm " oninput="calculate();"  placeholder="Width"/>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Height</label>
-                                    <input type="text" class="form-control form-control-sm"  placeholder="Height"/>
+                                    <input  id="box2" class="form-control form-control-sm " oninput="calculate();"  placeholder="Height"/>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Length</label>
-                                    <input type="text" class="form-control form-control-sm"  placeholder="Length"/>
+                                    <input  id="box3" class="form-control form-control-sm " oninput="calculate();"  placeholder="Length"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>Weight(kg)</label>
-                                <input type="email" class="form-control form-control-sm"  placeholder="Weight"/>
+                                <input  id="result" class="form-control form-control-sm" name="weight_kg"  placeholder="Weight"/>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleSelectd">Object Type</label>
                                     <select class="form-control" id="exampleSelectd">
@@ -121,9 +122,10 @@
 
                     </div>
                     <div class="card-footer">
-                        <button type="reset" class="btn btn-success mr-2">Check Rates</button>
+                        <button type="submit" class="btn btn-success mr-2">Check Rates</button>
                         <button type="reset" class="btn btn-secondary border-danger mr-2">Cancel</button>
-                        <button type="reset" class="btn btn-secondary ">Price Show Here</button>
+
+
                     </div>
                 </form>
                 <!--end::Form-->
@@ -132,11 +134,28 @@
     </div>
     <!--end::Row-->
 
+
+
+
+
+
+
 @endsection
 @section('js')
 
 
+    <script>
 
+        function calculate() {
+            var myBox1 = document.getElementById('box1').value;
+            var myBox2 = document.getElementById('box2').value;
+            var myBox3 = document.getElementById('box3').value;
+            var result = document.getElementById('result');
+            var myResult = (myBox1 * myBox2 * myBox3) / 1000;
+            document.getElementById('result').value = myResult;
+
+        }
+    </script>
 
 
 

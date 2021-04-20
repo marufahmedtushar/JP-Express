@@ -274,9 +274,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleSelectd">Passport</label>
+                                            <label for="exampleSelectd">Photocopy of Passport</label>
                                             <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="passport" type="file">
-                                            <img class="img img-thumbnail" src="/storage/images/{{$traveler->passport}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+
                                         </div>
                                     </div>
 
@@ -286,7 +286,7 @@
                                         <div class="form-group">
                                             <label for="exampleSelectd">Photocopy of Travel Ticket</label>
                                             <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="travel_ticket" type="file">
-                                            <img class="img img-thumbnail" src="/storage/images/{{$traveler->travel_ticket}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+
                                         </div>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@
                                         <div class="form-group">
                                             <label for="exampleSelectd">Photocopy of National ID</label>
                                             <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="nid" type="file">
-                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->nid}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+
                                         </div>
                                     </div>
 
@@ -308,7 +308,7 @@
                                         <div class="form-group">
                                             <label for="exampleSelectd">Photocopy of Hotel Booking</label>
                                             <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="hotel_booking" type="file">
-                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->hotel_booking}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+
                                         </div>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@
                                         <div class="form-group">
                                             <label for="exampleSelectd">Travel/Departure Cirtificate</label>
                                             <input class="dropzone-select btn btn-light-primary font-weight-bold btn-sm" name="travel_departure_cirtificate" type="file">
-                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->travel_departure_cirtificate}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+
                                         </div>
                                     </div>
                                 </div>
@@ -340,6 +340,83 @@
                             </div>
                         </form>
                         <!--end::Form-->
+
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom mt-5">
+                        <div class="card-body">
+                            <h3 class="card-title"></h3>
+                            <h5 class="card-title"></h5>
+                        </div>
+
+
+                        <!--begin::Form-->
+
+                            <div class="card-body">
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleSelectd">Photocopy of Passport</label>
+                                            <img class="img img-thumbnail" src="/storage/images/{{$traveler->passport}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleSelectd">Photocopy of Travel Ticket</label>
+                                            <img class="img img-thumbnail" src="/storage/images/{{$traveler->travel_ticket}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleSelectd">Photocopy of National ID</label>
+                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->nid}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleSelectd">Photocopy of Hotel Booking</label>
+                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->hotel_booking}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="exampleSelectd">Travel/Departure Cirtificate</label>
+                                            <img class="image-input-wrapper" src="/storage/images/{{$traveler->travel_departure_cirtificate}}" alt="Image placeholder" style="height: 100px;width: 120px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        <!--end::Form-->
+
+
+
+
+
+
 
 
                     </div>

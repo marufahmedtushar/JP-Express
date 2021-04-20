@@ -29,6 +29,12 @@ Route::group(['middleware' => ['auth','admin']],function() {
     Route::get('/traveleredit/{id}','AdminController@traveleredit');
     Route::put('/travelerupdate/{traveler}','AdminController@travelersave');
     Route::delete('/deletetraveler/{id}','AdminController@travelerdelete');
+    Route::get('/createprice','AdminController@createprice');
+    Route::get('/viewprice','AdminController@viewprice');
+    Route::put('/pricecreate','AdminController@pricestore');
+    Route::put('/priceupdate','AdminController@priceupdate');
+    Route::delete('/deleteprice/{id}','AdminController@pricedelete');
+
 });
 
 Auth::routes();
@@ -44,3 +50,5 @@ Route::put('/editinfo/{id}', 'HomeController@editinfo')->name('editinfo');
 Route::get('/changepassword', 'HomeController@changepassword')->name('changepassword');
 Route::put('/updatepassword', 'HomeController@updatepassword')->name('updatepassword');
 Route::get('/quickrates', 'HomeController@quickrates')->name('quickrates');
+Route::get('/onlinebooking', 'HomeController@onlinebooking')->name('onlinebooking');
+Route::put('/pricecheck','HomeController@pricecheck');
