@@ -134,12 +134,17 @@ class HomeController extends Controller
             ->where('weight_kg','>=','%'.$weight.'%' )
             ->get())
         {
-            return redirect()->back()->with(compact('price'));
+            return view('priceresult')->with('price',$price);
         }
-        else
+        elseif($price = Price::where('from','NOT LIKE','%'.$from.'%')
+            ->where(  'to','NOT LIKE','%'.$to.'%' )
+            ->where( 'service_type','NOT LIKE','%'.$service.'%')
+            ->where('weight_kg','NOT LIKE','%'.$weight.'%' )
+            ->get())
         {
-            return redirect()->back()->with('status','...........');
+            return view('priceresult')->with('price',$price)->with('status',',dvnlzgsFLLSDNL:fnDL');
         }
+
 
 
 

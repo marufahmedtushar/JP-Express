@@ -25,6 +25,7 @@
 
                 @foreach($price as $prices)
 
+
                     {{$prices->price}}
 
 
